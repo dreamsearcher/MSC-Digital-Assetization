@@ -1,0 +1,368 @@
+{
+  "metrics": {
+    "R2": 0.6988,
+    "RMSE": 4.992,
+    "Pearson_r": 0.8485,
+    "Macro_F1_5class": 0.4036,
+    "Macro_F1_4class": 0.5158,
+    "AUROC": 0.9162,
+    "Accuracy": 0.7067
+  },
+  "baselines": {
+    "Linear/Logistic": {
+      "R2": 0.794,
+      "Macro_F1": 0.475
+    },
+    "GradientBoosting (XGBoost-style)": {
+      "R2": 0.763,
+      "Macro_F1": 0.422
+    }
+  },
+  "ablation": {
+    "M1 only": {
+      "R2": 0.15,
+      "Macro_F1": 0.271
+    },
+    "M2 only": {
+      "R2": 0.511,
+      "Macro_F1": 0.327
+    },
+    "M3 only": {
+      "R2": -0.357,
+      "Macro_F1": 0.202
+    },
+    "M1+M2": {
+      "R2": 0.437,
+      "Macro_F1": 0.383
+    },
+    "M1+M2+M3 (concat)": {
+      "R2": 0.445,
+      "Macro_F1": 0.397
+    },
+    "M1-M5 (concat, no attention)": {
+      "R2": 0.647,
+      "Macro_F1": 0.486
+    }
+  },
+  "shap": {},
+  "zkp": {
+    "REP_eligible": 10,
+    "REP_success_rate": "100.0%",
+    "REP_mean_prove_s": 1.8,
+    "REP_verify_ms": 32.0,
+    "REP_gas": 113000,
+    "PQP_success_count": 0,
+    "PQP_mean_prove_s": 0,
+    "PQP_verify_ms": 38.0
+  },
+  "blockchain": {
+    "mode": "real_besu_4node",
+    "connected": true,
+    "block_number": 20397,
+    "peer_count": 3,
+    "chain_id": 1337,
+    "transactions": 30,
+    "finality_s": "measured",
+    "mean_finality_s": 1.831,
+    "min_finality_s": 1.611,
+    "max_finality_s": 2.119,
+    "blocks": 20397,
+    "registered_certs": 30
+  },
+  "qbft_benchmark": {
+    "timestamp": "2026-05-29T00:25:38.091857",
+    "contract_address": "0x284f8B77512efF613A2873045626E7c34Fec09B0",
+    "chain_id": 1337,
+    "node_url": "http://localhost:18545",
+    "mode": "full",
+    "block_interval": {
+      "n_blocks": 10,
+      "wall_clock_intervals": [
+        1.860335350036621,
+        2.0071632862091064,
+        2.0252673625946045,
+        2.0298500061035156,
+        1.9368042945861816,
+        2.0199244022369385,
+        2.0239901542663574,
+        2.01468563079834,
+        1.9215281009674072,
+        2.0305306911468506
+      ],
+      "block_timestamp_diffs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "mean_interval_s": 1.987,
+      "min_interval_s": 1.86,
+      "max_interval_s": 2.031,
+      "stdev_interval_s": 0.059,
+      "mean_ts_diff_s": 2
+    },
+    "single_finality": {
+      "n": 30,
+      "operation": "ping()",
+      "finality_list_s": [
+        1.9706,
+        1.8596,
+        1.975,
+        1.8233,
+        1.976,
+        1.8206,
+        1.9879,
+        2.0326,
+        1.8301,
+        1.9407,
+        1.8555,
+        1.9545,
+        1.9891,
+        1.9638,
+        1.8416,
+        1.937,
+        1.9987,
+        1.8164,
+        1.9441,
+        1.9514,
+        1.9756,
+        1.9892,
+        1.8397,
+        1.9792,
+        1.9834,
+        1.8514,
+        1.9797,
+        1.8061,
+        2.026,
+        1.8206
+      ],
+      "mean_finality_s": 1.924,
+      "median_finality_s": 1.9529,
+      "min_finality_s": 1.8061,
+      "max_finality_s": 2.0326,
+      "p95_finality_s": 2.026,
+      "stdev_finality_s": 0.0738,
+      "mean_gas": 28418
+    },
+    "sequential_tps": {
+      "n_submitted": 50,
+      "n_confirmed": 50,
+      "total_time_s": 5.62,
+      "send_time_s": 3.001,
+      "TPS_total": 8.9,
+      "TPS_send": 16.66,
+      "blocks_used": 2,
+      "tx_per_block": 25.0
+    },
+    "burst_tps": {
+      "n_submitted": 100,
+      "n_sent": 100,
+      "n_confirmed": 100,
+      "burst_time_s": 1.442,
+      "total_time_s": 8.18,
+      "TPS_burst_send": 69.36,
+      "TPS_confirmed": 12.22,
+      "blocks_used": 2,
+      "workers": 4
+    },
+    "cert_issuance": {
+      "n": 20,
+      "operation": "storeRecord()",
+      "mean_finality_s": 1.9102,
+      "min_finality_s": 1.3706,
+      "max_finality_s": 2.2124,
+      "p95_finality_s": 2.2124,
+      "stdev_finality_s": 0.1785,
+      "mean_gas": 163945,
+      "min_gas": 163062,
+      "max_gas": 180186,
+      "finality_list_s": [
+        1.3706,
+        1.9553,
+        1.8656,
+        1.987,
+        1.7702,
+        1.9671,
+        2.0032,
+        1.9513,
+        1.8463,
+        1.9689,
+        2.0165,
+        2.2124,
+        1.6296,
+        1.9317,
+        1.9466,
+        1.9682,
+        1.836,
+        1.9977,
+        1.8306,
+        2.1501
+      ],
+      "gas_list": [
+        180186,
+        163086,
+        163098,
+        163086,
+        163098,
+        163086,
+        163086,
+        163098,
+        163098,
+        163086,
+        163086,
+        163098,
+        163062,
+        163098,
+        163098,
+        163086,
+        163086,
+        163098,
+        163086,
+        163098
+      ],
+      "cert_ids": [
+        "9ca3b68d0546317981eea3ce1640ecd5abcf3f2ba473bb7607e42a0d49c4d24f",
+        "aabf67d2b57b5261d1efec9b2acc11c1912b4b0bfa04c9078e0df3fe66fe8aa4",
+        "12de1473b7428d6e06fb1df39ce44e99a9b1b17eb6bf08f8a37b1ae8d2e68744",
+        "804e465297ad717da4b4caf42ffd68a82718ee7e9e9d9913598526ea4c460517",
+        "e03365fbcb18bc0eaaeb413c56b73dfab6e695c93bd613ab2ab563093cbf27e7",
+        "11c1046269274e427c4ad217aa1f4a3c8e2fa5b28ace0b4ea522c1f2ee1355d2",
+        "64438da1af238db3df5db46ffbba6367507a0fdaa0d0e4922ad09d5178e623aa",
+        "f83ad3663cdf14f0b8281aba3e7dd7bca66ff30fd20d667c5f221838b3bf0598",
+        "e430b696a46a5e9c9df00f3b04a7f8af3cfc6212aa0f5ff3f07eec3bc7a67f9c",
+        "ed2d068acdc706618302d1debf025ffe9b675e2edf2d10c5b21b999a7cd9d037",
+        "be4c8af528d2a78d3f15b0f6966508c87d09cc59b945f7a82d44f591afce030b",
+        "91c40b69f4357db799deb48502122b2bf313a145ba501632db69bc47e0a3b625",
+        "a1bea334d2de5f0203ed8bee6f26ea41c95335b050fd7b0e44cf4fe331b13fb7",
+        "93af2cf49db7f2769b3c987be26bac8c7dbbf2c958e3de11d9733307a42b63d7",
+        "466dfa664dc40fc9433c2988df7021942de042d83d607c8bbaf8f27bb5ecda71",
+        "e20fa742ca5cf2e1cf21f17c0654cb802f977146bb57f6b1676373e01ff67614",
+        "ed04f4f19f14b5a82b4483a435e6a3d7c525b03d9cbda1b20b9a0d54ff6508fc",
+        "b1ac3ba36a566795c0d5d938134f0dcfda1f73c57505c6496da271cb538f9aa2",
+        "3e9c9465e41d9d6012d1b3f04ccd268f28454c3f9650d1ee0d7bbb6142d9716f",
+        "8c8811d1cdb34fddfbea53dd3516d667b7d67161ae3eb684095689823716ec09"
+      ]
+    },
+    "lifecycle_append": {
+      "n": 20,
+      "operation": "appendLifecycle()",
+      "mean_finality_s": 1.8987,
+      "min_finality_s": 1.3182,
+      "max_finality_s": 2.0596,
+      "p95_finality_s": 2.0596,
+      "mean_gas": 71189,
+      "finality_list_s": [
+        1.3182,
+        2.0596,
+        1.822,
+        1.9773,
+        1.8167,
+        1.9981,
+        2.0054,
+        1.8197,
+        2.0583,
+        1.82,
+        1.9872,
+        1.8188,
+        1.9629,
+        1.9531,
+        1.7875,
+        1.9571,
+        2.0245,
+        1.8574,
+        1.9846,
+        1.9457
+      ],
+      "gas_list": [
+        71194,
+        71182,
+        71194,
+        71182,
+        71194,
+        71194,
+        71182,
+        71194,
+        71182,
+        71194,
+        71194,
+        71182,
+        71194,
+        71182,
+        71194,
+        71194,
+        71182,
+        71194,
+        71182,
+        71194
+      ]
+    },
+    "node_sync": {
+      "node_results": {
+        "validator1": {
+          "connected": true,
+          "block_number": 20493,
+          "peers": 3,
+          "tx_found": true,
+          "tx_status": 1,
+          "tx_block": 20492
+        },
+        "validator2": {
+          "connected": true,
+          "block_number": 20493,
+          "peers": 3,
+          "tx_found": true,
+          "tx_status": 1,
+          "tx_block": 20492
+        },
+        "validator3": {
+          "connected": true,
+          "block_number": 20493,
+          "peers": 3,
+          "tx_found": true,
+          "tx_status": 1,
+          "tx_block": 20492
+        },
+        "validator4": {
+          "connected": true,
+          "block_number": 20493,
+          "peers": 3,
+          "tx_found": true,
+          "tx_status": 1,
+          "tx_block": 20492
+        }
+      },
+      "all_synced": true,
+      "block_spread": 0,
+      "tx_found_all": true,
+      "connected_nodes": 4
+    }
+  },
+  "twin": [
+    {
+      "patient": "P001",
+      "top_match": 87.79,
+      "tier": "Suitable"
+    },
+    {
+      "patient": "P002",
+      "top_match": 85.31,
+      "tier": "Suitable"
+    },
+    {
+      "patient": "P003",
+      "top_match": 82.87,
+      "tier": "Suitable"
+    },
+    {
+      "patient": "P004",
+      "top_match": 79.37,
+      "tier": "Conditional"
+    }
+  ],
+  "elapsed_s": 373.8
+}
