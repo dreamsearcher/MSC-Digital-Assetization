@@ -1,0 +1,43 @@
+{
+  "config": {
+    "chainId": 1337,
+    "berlinBlock": 0,
+    "londonBlock": 0,
+    "qbft": {
+      "blockperiodseconds": 2,
+      "epochlength": 30000,
+      "requesttimeoutseconds": 4,
+      "blockreward": "0",
+      "mining": true
+    }
+  },
+  "nonce": "0x0",
+  "timestamp": "0x5b3d92d7",
+  "gasLimit": "0x1fffffffffffff",
+  "difficulty": "0x1",
+  "mixHash": "0x63746963616c2062797a616e74696e65206661756c7420746f6c6572616e6365",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {
+    "4964A01C55dA3F98B9ab24799c5B40073279DB7d": {
+      "balance": "0xDE0B6B3A7640000"
+    },
+    "5E33A8C3d0e55F2c1d08f65555a51aECb2970F36": {
+      "balance": "0xDE0B6B3A7640000"
+    },
+    "98AbFd7dAee4C96E1bAE55681E5Fa7bd2A2AB7e3": {
+      "balance": "0xDE0B6B3A7640000"
+    },
+    "1fBD7A1eC14B9F4125472e6947438a0c5b54CDd6": {
+      "balance": "0xDE0B6B3A7640000"
+    },
+    "fe3b557e8fb62b89f4916b721be55ceb828dbd73": {
+      "privateKey": "8f2a55949038a9610f50fb23b5883af3b4ecb3c3bb792cbcefbd1542c692be63",
+      "comment": "Deployer account",
+      "balance": "0xDE0B6B3A7640000000"
+    }
+  },
+  "extraData": "0xf87aa00000000000000000000000000000000000000000000000000000000000000000f854944964a01c55da3f98b9ab24799c5b40073279db7d945e33a8c3d0e55f2c1d08f65555a51aecb2970f369498abfd7daee4c96e1bae55681e5fa7bd2a2ab7e3941fbd7a1ec14b9f4125472e6947438a0c5b54cdd6c080c0",
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}
