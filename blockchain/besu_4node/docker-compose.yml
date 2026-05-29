@@ -1,0 +1,161 @@
+# ─────────────────────────────────────────────────────────────
+# MDAF 4-Node Hyperledger Besu QBFT Network
+# Nodes: validator1~4  |  subnet: 192.168.200.0/24
+# JSON-RPC: 18545~18549 |  P2P: 30403~30406
+# ─────────────────────────────────────────────────────────────
+
+networks:
+  mdaf-besu-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.200.0/24
+
+services:
+
+  # ── Validator 1 (bootnode) ──────────────────────────────────
+  validator1:
+    image: hyperledger/besu:latest
+    container_name: mdaf_validator1
+    networks:
+      mdaf-besu-net:
+        ipv4_address: 192.168.200.11
+    ports:
+      - "18545:8545"    # JSON-RPC HTTP
+      - "30403:30303"   # P2P
+    volumes:
+      - ./config/genesis.json:/config/genesis.json:ro
+      - ./config/static-nodes.json:/config/static-nodes.json:ro
+      - ./data/node1:/data
+      - ./logs:/logs
+    environment:
+      - BESU_OPTS=-Xmx512m
+    command: >
+      --genesis-file=/config/genesis.json
+      --node-private-key-file=/data/key
+      --data-path=/data
+      --rpc-http-enabled=true
+      --rpc-http-host=0.0.0.0
+      --rpc-http-port=8545
+      --rpc-http-api=ETH,NET,QBFT,ADMIN,TXPOOL,WEB3
+      --rpc-http-cors-origins=*
+      --host-allowlist=*
+      --p2p-host=192.168.200.11
+      --p2p-port=30303
+      --static-nodes-file=/config/static-nodes.json
+      --logging=INFO
+      --min-gas-price=0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8545"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  # ── Validator 2 ─────────────────────────────────────────────
+  validator2:
+    image: hyperledger/besu:latest
+    container_name: mdaf_validator2
+    networks:
+      mdaf-besu-net:
+        ipv4_address: 192.168.200.12
+    ports:
+      - "18547:8545"
+      - "30404:30303"
+    volumes:
+      - ./config/genesis.json:/config/genesis.json:ro
+      - ./config/static-nodes.json:/config/static-nodes.json:ro
+      - ./data/node2:/data
+      - ./logs:/logs
+    environment:
+      - BESU_OPTS=-Xmx512m
+    command: >
+      --genesis-file=/config/genesis.json
+      --node-private-key-file=/data/key
+      --data-path=/data
+      --rpc-http-enabled=true
+      --rpc-http-host=0.0.0.0
+      --rpc-http-port=8545
+      --rpc-http-api=ETH,NET,QBFT,ADMIN,TXPOOL,WEB3
+      --rpc-http-cors-origins=*
+      --host-allowlist=*
+      --p2p-host=192.168.200.12
+      --p2p-port=30303
+      --static-nodes-file=/config/static-nodes.json
+      --logging=INFO
+      --min-gas-price=0
+    depends_on:
+      - validator1
+    restart: unless-stopped
+
+  # ── Validator 3 ─────────────────────────────────────────────
+  validator3:
+    image: hyperledger/besu:latest
+    container_name: mdaf_validator3
+    networks:
+      mdaf-besu-net:
+        ipv4_address: 192.168.200.13
+    ports:
+      - "18548:8545"
+      - "30405:30303"
+    volumes:
+      - ./config/genesis.json:/config/genesis.json:ro
+      - ./config/static-nodes.json:/config/static-nodes.json:ro
+      - ./data/node3:/data
+      - ./logs:/logs
+    environment:
+      - BESU_OPTS=-Xmx512m
+    command: >
+      --genesis-file=/config/genesis.json
+      --node-private-key-file=/data/key
+      --data-path=/data
+      --rpc-http-enabled=true
+      --rpc-http-host=0.0.0.0
+      --rpc-http-port=8545
+      --rpc-http-api=ETH,NET,QBFT,ADMIN,TXPOOL,WEB3
+      --rpc-http-cors-origins=*
+      --host-allowlist=*
+      --p2p-host=192.168.200.13
+      --p2p-port=30303
+      --static-nodes-file=/config/static-nodes.json
+      --logging=INFO
+      --min-gas-price=0
+    depends_on:
+      - validator1
+    restart: unless-stopped
+
+  # ── Validator 4 ─────────────────────────────────────────────
+  validator4:
+    image: hyperledger/besu:latest
+    container_name: mdaf_validator4
+    networks:
+      mdaf-besu-net:
+        ipv4_address: 192.168.200.14
+    ports:
+      - "18549:8545"
+      - "30406:30303"
+    volumes:
+      - ./config/genesis.json:/config/genesis.json:ro
+      - ./config/static-nodes.json:/config/static-nodes.json:ro
+      - ./data/node4:/data
+      - ./logs:/logs
+    environment:
+      - BESU_OPTS=-Xmx512m
+    command: >
+      --genesis-file=/config/genesis.json
+      --node-private-key-file=/data/key
+      --data-path=/data
+      --rpc-http-enabled=true
+      --rpc-http-host=0.0.0.0
+      --rpc-http-port=8545
+      --rpc-http-api=ETH,NET,QBFT,ADMIN,TXPOOL,WEB3
+      --rpc-http-cors-origins=*
+      --host-allowlist=*
+      --p2p-host=192.168.200.14
+      --p2p-port=30303
+      --static-nodes-file=/config/static-nodes.json
+      --logging=INFO
+      --min-gas-price=0
+    depends_on:
+      - validator1
+    restart: unless-stopped
